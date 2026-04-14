@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://dtdnwywkckhqx"]
+
+[ext_resource type="Script" uid="uid://bm274xklrd7n1" path="res://scripts/flappy_bird.gd" id="1_b1j26"]
+[ext_resource type="Texture2D" uid="uid://b1ujyqg75nwk7" path="res://assets/flappy/bird.png" id="2_54nvg"]
+[ext_resource type="Texture2D" uid="uid://c6fi13kmvldpn" path="res://extras/288x288 textures (3).png" id="3_54nvg"]
+[ext_resource type="PackedScene" uid="uid://ct3i7ilcuq34s" path="res://scenes/flappy_wallnode.tscn" id="3_cbp1d"]
+[ext_resource type="PackedScene" uid="uid://cprt7lep30tnj" path="res://scenes/kill_zone.tscn" id="5_cbp1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq5cq"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uehv"]
+size = Vector2(16.5, 16.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1j26"]
+size = Vector2(26, 269)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_quv2h"]
+distance = -488.0
+
+[node name="flappy_world" type="Node2D" unique_id=2146478654]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=181740645]
+follow_viewport_enabled = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1027067781]
+offset_left = -40.0
+offset_top = -97.0
+offset_right = 80.0
+offset_bottom = -49.0
+
+[node name="PlayerNode" type="Node2D" parent="." unique_id=2085072700]
+
+[node name="Bird" type="CharacterBody2D" parent="PlayerNode" unique_id=1069442336]
+script = ExtResource("1_b1j26")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNode/Bird" unique_id=1329898620]
+shape = SubResource("RectangleShape2D_nq5cq")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerNode/Bird" unique_id=881105077]
+texture = ExtResource("2_54nvg")
+
+[node name="Detect" type="Area2D" parent="PlayerNode/Bird" unique_id=839935006]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNode/Bird/Detect" unique_id=1310425315]
+shape = SubResource("RectangleShape2D_6uehv")
+
+[node name="Resetter" type="Area2D" parent="PlayerNode/Bird" unique_id=1425645408]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNode/Bird/Resetter" unique_id=169897095]
+position = Vector2(-256, 22.5)
+shape = SubResource("RectangleShape2D_b1j26")
+
+[node name="Camera2D" type="Camera2D" parent="PlayerNode/Bird" unique_id=1395737484]
+position = Vector2(80, 0)
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="PlayerNode/Bird" unique_id=834430135]
+position = Vector2(-8.000015, 0)
+scale = Vector2(3.9687502, 3.625)
+shadow_enabled = true
+texture = ExtResource("3_54nvg")
+
+[node name="Wallnode" parent="." unique_id=533517621 instance=ExtResource("3_cbp1d")]
+position = Vector2(432, 0)
+metadata/_edit_group_ = true
+
+[node name="Wallnode2" parent="." unique_id=630904594 instance=ExtResource("3_cbp1d")]
+position = Vector2(584, -48)
+metadata/_edit_group_ = true
+
+[node name="Wallnode3" parent="." unique_id=301260285 instance=ExtResource("3_cbp1d")]
+position = Vector2(736, -96)
+metadata/_edit_group_ = true
+
+[node name="Wallnode4" parent="." unique_id=1037196837 instance=ExtResource("3_cbp1d")]
+position = Vector2(896, -64)
+metadata/_edit_group_ = true
+
+[node name="Wallnode5" parent="." unique_id=1458774068 instance=ExtResource("3_cbp1d")]
+position = Vector2(1040, -15)
+metadata/_edit_group_ = true
+
+[node name="Bg" type="Sprite2D" parent="." unique_id=1062050905]
+modulate = Color(0.08627451, 0.011764706, 0.33333334, 1)
+z_index = -5
+scale = Vector2(200, 200)
+texture = ExtResource("2_54nvg")
+
+[node name="KillZone" parent="." unique_id=1297806835 instance=ExtResource("5_cbp1d")]
+position = Vector2(432, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" unique_id=492494983]
+shape = SubResource("WorldBoundaryShape2D_quv2h")
+
+[connection signal="area_entered" from="PlayerNode/Bird/Detect" to="PlayerNode/Bird" method="_on_detect_area_entered"]
+[connection signal="body_entered" from="PlayerNode/Bird/Detect" to="PlayerNode/Bird" method="_on_detect_body_entered"]
+[connection signal="body_entered" from="PlayerNode/Bird/Resetter" to="PlayerNode/Bird" method="_on_resetter_body_entered"]

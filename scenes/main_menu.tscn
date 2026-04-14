@@ -66,6 +66,9 @@ offset_bottom = 654.0
 
 [node name="Fade_timer" type="Timer" parent="Fade_transitions" unique_id=1235158691]
 
+[node name="Fade_transitions2" parent="." unique_id=932711126 instance=ExtResource("3_bqqt6")]
+visible = false
+
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Games" to="." method="_on_games_pressed"]
 [connection signal="timeout" from="Fade_transitions/Fade_timer" to="." method="_on_fade_timer_timeout"]

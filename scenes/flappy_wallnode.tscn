@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://ct3i7ilcuq34s"]
+
+[ext_resource type="Script" uid="uid://hkw6g6h8fgii" path="res://scripts/flappy_walls.gd" id="1_wckxf"]
+[ext_resource type="Texture2D" uid="uid://cw6qnular1mpc" path="res://assets/flappy/wall.png" id="2_7mctg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ci0k6"]
+size = Vector2(32, 166)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uahcf"]
+polygon = PackedVector2Array(-16, -433, -16, -32, 17, -37, 16, -433)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqlig"]
+size = Vector2(20, 62)
+
+[node name="Wallnode" type="Node2D" unique_id=533517621]
+
+[node name="walls" type="StaticBody2D" parent="." unique_id=2046919627]
+collision_mask = 2
+script = ExtResource("1_wckxf")
+
+[node name="UpperWallSpri" type="Sprite2D" parent="walls" unique_id=545706101]
+texture_filter = 1
+position = Vector2(0, -233)
+scale = Vector2(2, 25)
+texture = ExtResource("2_7mctg")
+
+[node name="UpperWallCol" type="CollisionShape2D" parent="walls" unique_id=904997953]
+position = Vector2(0, -115)
+shape = SubResource("RectangleShape2D_ci0k6")
+
+[node name="UpperLightOccluder2D" type="LightOccluder2D" parent="walls" unique_id=491984820]
+occluder = SubResource("OccluderPolygon2D_uahcf")
+
+[node name="LowerWallSpri2" type="Sprite2D" parent="walls" unique_id=2027297836]
+texture_filter = 1
+position = Vector2(0, 233)
+scale = Vector2(2, 25)
+texture = ExtResource("2_7mctg")
+
+[node name="LowerWallCol2" type="CollisionShape2D" parent="walls" unique_id=1807863854]
+position = Vector2(0, 115)
+shape = SubResource("RectangleShape2D_ci0k6")
+
+[node name="LowerLightOccluder2D2" type="LightOccluder2D" parent="walls" unique_id=1618885031]
+position = Vector2(0, 466)
+occluder = SubResource("OccluderPolygon2D_uahcf")
+
+[node name="PointArea" type="Area2D" parent="walls" unique_id=1902942867]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/PointArea" unique_id=1842337095]
+shape = SubResource("RectangleShape2D_oqlig")

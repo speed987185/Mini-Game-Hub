@@ -2,6 +2,10 @@ extends Node2D
 
 var button_type = null
 
+func ready():
+	$Fade_transitions2/AnimationPlayer.play("fade_out")
+	
+
 
 func _on_games_pressed() -> void:
 	button_type = "games"

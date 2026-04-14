@@ -75,4 +75,10 @@ theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_idr2f")
 text = "Flappy"
 
+[node name="Fade_transitions2" parent="." unique_id=507876635 instance=ExtResource("2_gkbpp")]
+visible = false
+
+[node name="Fade_timer" type="Timer" parent="Fade_transitions2" unique_id=1218787091]
+
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="timeout" from="Fade_transitions2/Fade_timer" to="." method="_on_fade_timer_timeout"]

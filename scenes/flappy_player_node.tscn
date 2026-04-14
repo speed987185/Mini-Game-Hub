@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://v5ny5u8lmjra"]
+
+[ext_resource type="Texture2D" uid="uid://b1ujyqg75nwk7" path="res://assets/flappy/bird.png" id="1_e8ah2"]
+[ext_resource type="Script" uid="uid://bm274xklrd7n1" path="res://scripts/flappy_bird.gd" id="1_nq5cq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq5cq"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uehv"]
+size = Vector2(16.5, 16.5)
+
+[node name="PlayerNode" type="Node2D" unique_id=2085072700]
+
+[node name="Bird" type="CharacterBody2D" parent="." unique_id=1069442336]
+collision_layer = 2
+script = ExtResource("1_nq5cq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird" unique_id=1329898620]
+shape = SubResource("RectangleShape2D_nq5cq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bird" unique_id=881105077]
+texture = ExtResource("1_e8ah2")
+
+[node name="Detect" type="Area2D" parent="Bird" unique_id=839935006]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird/Detect" unique_id=1310425315]
+shape = SubResource("RectangleShape2D_6uehv")
