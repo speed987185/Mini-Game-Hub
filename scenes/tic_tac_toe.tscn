@@ -2,10 +2,77 @@
 
 [ext_resource type="Script" uid="uid://dvotav0xwht2d" path="res://scripts/tic_tac_toe.gd" id="1_etyx0"]
 [ext_resource type="PackedScene" uid="uid://b3uf0ll2txjm3" path="res://scenes/tictac_board.tscn" id="2_8h2lu"]
+[ext_resource type="PackedScene" uid="uid://cyuwqrcssdayw" path="res://scenes/tictac_circle.tscn" id="2_oa36e"]
+[ext_resource type="PackedScene" uid="uid://b7d16ilnct5g8" path="res://scenes/tictac_cross.tscn" id="3_oa36e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa36e"]
+bg_color = Color(0.08627451, 0.011764706, 0.19607843, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfk5e"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_offset = Vector2(10, 10)
 
 [node name="Tic_Tac_Toe" type="Node" unique_id=1566595643]
 script = ExtResource("1_etyx0")
+circle_scene = ExtResource("2_oa36e")
+cross_scene = ExtResource("3_oa36e")
 
 [node name="Board" parent="." unique_id=134556182 instance=ExtResource("2_8h2lu")]
 position = Vector2(324, 324)
 scale = Vector2(1.08, 1.08)
+
+[node name="SideInfo" type="Panel" parent="." unique_id=936816481]
+custom_minimum_size = Vector2(300, 600)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -505.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oa36e")
+
+[node name="Title" type="Label" parent="." unique_id=495388028]
+offset_left = 732.0
+offset_top = 27.0
+offset_right = 1074.0
+offset_bottom = 132.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "Tic-Tac-Toe"
+
+[node name="PlayerLabel" type="Label" parent="." unique_id=925465312]
+offset_left = 809.0
+offset_top = 163.0
+offset_right = 990.0
+offset_bottom = 214.0
+theme_override_font_sizes/font_size = 40
+text = "turns for:"
+
+[node name="back" type="Button" parent="." unique_id=2093738096]
+offset_left = 1064.0
+offset_top = 558.0
+offset_right = 1142.0
+offset_bottom = 630.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "↩"
+
+[node name="turns" type="Panel" parent="." unique_id=166960620]
+offset_left = 822.0
+offset_top = 258.0
+offset_right = 1003.0
+offset_bottom = 437.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bfk5e")

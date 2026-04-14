@@ -21,3 +21,4 @@ func _on_quit_pressed() -> void:
 func _on_fade_timer_timeout() -> void:
 	if button_type == "games":
 		get_tree().change_scene_to_file("res://scenes/games.tscn")
+	
