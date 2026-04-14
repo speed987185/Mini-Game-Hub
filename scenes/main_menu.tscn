@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ljdgquwu565j"]
+
+[node name="MainMenu" type="Node2D" unique_id=672886895]
+
+[node name="Button" type="Button" parent="." unique_id=1650714519]
+offset_left = 421.0
+offset_top = 333.0
+offset_right = 634.0
+offset_bottom = 441.0
+theme_override_font_sizes/font_size = 38
+text = "Games"
+
+[node name="Button2" type="Button" parent="." unique_id=959398897]
+offset_left = 421.0
+offset_top = 480.0
+offset_right = 634.0
+offset_bottom = 588.0
+theme_override_font_sizes/font_size = 38
+text = "Quit"
+
+[node name="Label" type="Label" parent="." unique_id=714545503]
+offset_left = 303.0
+offset_top = 190.0
+offset_right = 779.0
+offset_bottom = 321.0
+theme_override_font_sizes/font_size = 80
+text = "Mini - Game"
