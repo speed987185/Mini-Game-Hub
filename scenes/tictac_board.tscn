@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b3uf0ll2txjm3"]
 
-[ext_resource type="Texture2D" uid="uid://cp0yka4rsnfdo" path="res://assets/tic-tac/grid.png" id="1_64i7v"]
+[ext_resource type="Texture2D" uid="uid://c08vnp4p0ilbm" path="res://assets/tic-tac/grid (1).png" id="1_64i7v"]
 
-[node name="Board" type="Sprite2D" unique_id=1510876652]
-scale = Vector2(0.7441107, 0.76562095)
+[node name="Board" type="Sprite2D" unique_id=134556182]
+modulate = Color(0.2509804, 0, 0.75686276, 1)
 texture = ExtResource("1_64i7v")

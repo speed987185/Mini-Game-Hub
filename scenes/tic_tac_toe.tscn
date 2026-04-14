@@ -6,6 +6,6 @@
 [node name="Tic_Tac_Toe" type="Node" unique_id=1566595643]
 script = ExtResource("1_etyx0")
 
-[node name="Board" parent="." unique_id=1510876652 instance=ExtResource("2_8h2lu")]
-position = Vector2(532, 307)
-scale = Vector2(0.5, 0.5)
+[node name="Board" parent="." unique_id=134556182 instance=ExtResource("2_8h2lu")]
+position = Vector2(324, 324)
+scale = Vector2(1.08, 1.08)
