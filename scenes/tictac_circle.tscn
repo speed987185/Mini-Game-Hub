@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cyuwqrcssdayw"]
+
+[ext_resource type="Texture2D" uid="uid://c8y1uv40totg" path="res://assets/tic-tac/circle.png" id="1_6e8l5"]
+
+[node name="circle" type="Sprite2D" unique_id=2053720113]
+texture = ExtResource("1_6e8l5")

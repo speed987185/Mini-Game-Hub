@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b7d16ilnct5g8"]
+
+[ext_resource type="Texture2D" uid="uid://cmcpugan61hsb" path="res://assets/tic-tac/cross.png" id="1_ru180"]
+
+[node name="cross" type="Sprite2D" unique_id=1822613156]
+texture = ExtResource("1_ru180")

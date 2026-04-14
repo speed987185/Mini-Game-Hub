@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b6diqx1s61po7"]
+
+[ext_resource type="Script" uid="uid://dvotav0xwht2d" path="res://scripts/tic_tac_toe.gd" id="1_etyx0"]
+[ext_resource type="PackedScene" uid="uid://b3uf0ll2txjm3" path="res://scenes/tictac_board.tscn" id="2_8h2lu"]
+
+[node name="Tic_Tac_Toe" type="Node" unique_id=1566595643]
+script = ExtResource("1_etyx0")
+
+[node name="Board" parent="." unique_id=1510876652 instance=ExtResource("2_8h2lu")]
+position = Vector2(532, 307)
+scale = Vector2(0.5, 0.5)
