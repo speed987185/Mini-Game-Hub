@@ -7,7 +7,7 @@ const GRAVITY = 10
 var Wall = preload("res://scenes/flappy_wallnode.tscn")
 var score = 0
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity.y += GRAVITY
 	
 	if velocity.y > MAXFALLSPEED:
@@ -18,15 +18,15 @@ func _physics_process(delta):
 		
 	move_and_slide()
 	
-	get_parent().get_parent().get_node("CanvasLayer/RichTextLabel").text = 0
+	get_parent().get_parent().get_node("CanvasLayer/RichTextLabel").text = str(score)
 
 func Wall_reset():
 	var Wall_instance = Wall.instantiate()
 	Wall_instance.position = Vector2(450, randf_range(-60.0, 60.0))
 	get_parent().call_deferred("add_child", Wall_instance)
 
-func _on_resetter_body_entered(body: Node2D) -> void:
-	body.queue_free()
+func _on_resetter_body_entered(_body: Node2D) -> void:
+	_body.queue_free()
 	Wall_reset()
 
 
