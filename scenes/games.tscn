@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://b4lwc8xxi0f05"]
+
+[ext_resource type="Script" uid="uid://do5y03ovnqgwy" path="res://scripts/games.gd" id="1_umruc"]
+[ext_resource type="PackedScene" uid="uid://bnyayn2xy7jtl" path="res://scenes/fade_transitions.tscn" id="2_gkbpp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idr2f"]
+bg_color = Color(0.08627451, 0.011764706, 0.34509805, 1)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+
+[node name="Games" type="Node2D" unique_id=891082317]
+script = ExtResource("1_umruc")
+
+[node name="Panel" type="Panel" parent="." unique_id=653665780]
+offset_right = 1150.0
+offset_bottom = 646.0
+
+[node name="ColorRect" type="ColorRect" parent="Panel" unique_id=1066964352]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 643.0
+color = Color(0.08627451, 0.011764706, 0.19607843, 1)
+
+[node name="Label" type="Label" parent="." unique_id=831702388]
+offset_left = 242.0
+offset_top = 60.0
+offset_right = 847.0
+offset_bottom = 222.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 120
+text = "Game's Hub"
+
+[node name="Back" type="Button" parent="." unique_id=2141029305]
+offset_left = 1007.0
+offset_top = 73.0
+offset_right = 1095.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.9119526, 0.91354257, 7.70092e-07, 1)
+theme_override_font_sizes/font_size = 60
+text = "↩"
+
+[node name="Game1" type="Button" parent="." unique_id=1690656044]
+offset_left = 73.0
+offset_top = 255.0
+offset_right = 193.0
+offset_bottom = 380.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_idr2f")
+text = "Tic-Tac"
+
+[node name="Game2" type="Button" parent="." unique_id=719300888]
+offset_left = 482.0
+offset_top = 259.0
+offset_right = 602.0
+offset_bottom = 384.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_idr2f")
+text = "Snakey"
+
+[node name="Game3" type="Button" parent="." unique_id=1361311112]
+offset_left = 821.0
+offset_top = 259.0
+offset_right = 941.0
+offset_bottom = 384.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_idr2f")
+text = "Flappy"
+
+[node name="Fade_transitions" parent="." unique_id=182935378 instance=ExtResource("2_gkbpp")]
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
