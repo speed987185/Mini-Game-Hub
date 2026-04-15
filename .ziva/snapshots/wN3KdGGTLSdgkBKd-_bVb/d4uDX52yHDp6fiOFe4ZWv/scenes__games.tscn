@@ -84,5 +84,4 @@ visible = false
 [connection signal="pressed" from="TicTac" to="." method="_on_tic_tac_pressed"]
 [connection signal="pressed" from="flappy" to="." method="_on_game_3_pressed"]
 [connection signal="pressed" from="flappy" to="." method="_on_flappy_pressed"]
-[connection signal="pressed" from="Game2" to="." method="_on_game2_pressed"]
 [connection signal="timeout" from="Fade_transitions2/Fade_timer" to="." method="_on_fade_timer_timeout"]

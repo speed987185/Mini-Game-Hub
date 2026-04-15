@@ -9,11 +9,8 @@ const CELL_SIZE: int = 40
 var score: int = 0
 var game_started: bool = false
 
-# Playable grid bounds based on background sprites
-var grid_min_x: int
-var grid_max_x: int
-var grid_min_y: int
-var grid_max_y: int
+var grid_width: int = 0
+var grid_height: int = 0
 
 var snake_data: Array[Vector2] = []
 var snake: Array[Panel] = []
@@ -24,43 +21,22 @@ var can_move: bool = true
 var fruit_data: Vector2 = Vector2.ZERO
 var fruit_node: Node = null
 
-@onready var bg_sprites: Array[Sprite2D] = [$BgSprite1, $BgSprite2, $BgSprite3]
 @onready var move_timer: Timer = $MoveTimer
 @onready var score_label: Label = $Hud/ScoreLabel
 @onready var game_over_ui: CanvasLayer = $Snake_game_over
 @onready var result_label: Label = $Snake_game_over/ResultLabel
 @onready var reset_button: Button = $Snake_game_over/Reset
 @onready var home_button: Button = $Snake_game_over/home
+@onready var grid_panel: Panel = $Panel
 
 func _ready() -> void:
 	randomize()
-	_calculate_grid_bounds()
-
+	grid_width = max(1, int(grid_panel.size.x / CELL_SIZE))
+	grid_height = max(1, int(grid_panel.size.y / CELL_SIZE))
 	game_over_ui.visible = false
-	reset_button.connect("pressed", Callable(self, "_on_reset_pressed"))
-	home_button.connect("pressed", Callable(self, "_on_home_pressed"))
+	reset_button.pressed.connect(_on_reset_pressed)
+	home_button.pressed.connect(_on_home_pressed)
 	new_game()
-
-func _calculate_grid_bounds() -> void:
-	var play_rect: Rect2 = Rect2()
-	for sprite in bg_sprites:
-		var tex: Texture2D = sprite.texture
-		if tex:
-			var size: Vector2 = tex.get_size() * sprite.global_scale
-			var top_left: Vector2 = sprite.global_position
-			if sprite.centered:
-				top_left -= size * 0.5
-			var rect: Rect2 = Rect2(top_left, size)
-			if play_rect.size == Vector2.ZERO:
-				play_rect = rect
-			else:
-				play_rect = play_rect.merge(rect)
-	var min_cell: Vector2 = (play_rect.position / CELL_SIZE).floor()
-	var max_cell: Vector2 = ((play_rect.position + play_rect.size) / CELL_SIZE).floor() - Vector2(1, 1)
-	grid_min_x = int(min_cell.x)
-	grid_max_x = int(max_cell.x)
-	grid_min_y = int(min_cell.y)
-	grid_max_y = int(max_cell.y)
 
 func new_game() -> void:
 	move_timer.stop()
@@ -83,10 +59,11 @@ func new_game() -> void:
 	spawn_fruit()
 
 func generate_snake() -> void:
-	var segment_count: int = min(3, grid_max_y - grid_min_y + 1)
-	var start_x: int = clamp(int((grid_min_x + grid_max_x) / 2), grid_min_x, grid_max_x)
-	var start_y: int = clamp(int((grid_min_y + grid_max_y) / 2), grid_min_y, grid_max_y - segment_count + 1)
-	var pos: Vector2 = Vector2(start_x, start_y)
+	var segment_count = min(3, grid_height)
+	var max_start_y = max(grid_height - segment_count, 0)
+	var start_x = clamp(int(grid_width / 2), 0, max(grid_width - 1, 0))
+	var start_y = clamp(int(grid_height / 2), 0, max_start_y)
+	var pos = Vector2(start_x, start_y)
 	for i in range(segment_count):
 		add_segment(pos)
 		pos += Vector2.DOWN
@@ -132,7 +109,7 @@ func start_game() -> void:
 
 func _on_move_timer_timeout() -> void:
 	can_move = true
-	var old_data: Array[Vector2] = snake_data.duplicate()
+	var old_data = snake_data.duplicate()
 
 	snake_data[0] += move_direction
 	for i in range(1, snake_data.size()):
@@ -152,9 +129,9 @@ func _on_move_timer_timeout() -> void:
 
 func spawn_fruit() -> void:
 	var free_cells: Array[Vector2] = []
-	for x in range(grid_min_x, grid_max_x + 1):
-		for y in range(grid_min_y, grid_max_y + 1):
-			var cell: Vector2 = Vector2(x, y)
+	for x in range(grid_width):
+		for y in range(grid_height):
+			var cell = Vector2(x, y)
 			if not snake_data.has(cell):
 				free_cells.append(cell)
 	if free_cells.is_empty():
@@ -184,7 +161,7 @@ func _on_home_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func is_out_of_bounds(head_pos: Vector2) -> bool:
-	return head_pos.x < grid_min_x or head_pos.x > grid_max_x or head_pos.y < grid_min_y or head_pos.y > grid_max_y
+	return head_pos.x < 0 or head_pos.x >= grid_width or head_pos.y < 0 or head_pos.y >= grid_height
 
 func is_self_collision() -> bool:
 	for i in range(1, snake_data.size()):

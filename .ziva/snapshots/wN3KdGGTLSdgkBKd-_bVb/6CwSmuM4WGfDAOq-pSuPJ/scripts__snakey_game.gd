@@ -37,8 +37,8 @@ func _ready() -> void:
 	_calculate_grid_bounds()
 
 	game_over_ui.visible = false
-	reset_button.connect("pressed", Callable(self, "_on_reset_pressed"))
-	home_button.connect("pressed", Callable(self, "_on_home_pressed"))
+	reset_button.pressed.connect(_on_reset_pressed)
+	home_button.pressed.connect(_on_home_pressed)
 	new_game()
 
 func _calculate_grid_bounds() -> void:
@@ -152,8 +152,8 @@ func _on_move_timer_timeout() -> void:
 
 func spawn_fruit() -> void:
 	var free_cells: Array[Vector2] = []
-	for x in range(grid_min_x, grid_max_x + 1):
-		for y in range(grid_min_y, grid_max_y + 1):
+	for x in grid_min_x:grid_max_x + 1:
+		for y in grid_min_y:grid_max_y + 1:
 			var cell: Vector2 = Vector2(x, y)
 			if not snake_data.has(cell):
 				free_cells.append(cell)

@@ -39,19 +39,9 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.08627451, 0.011764706, 0.19607843, 1)
 
-[node name="BgSprite1" type="Sprite2D" parent="." unique_id=2137830237]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2137830237]
 position = Vector2(557, 353)
-scale = Vector2(0.16808325, 0.13424395)
-texture = ExtResource("2_vw4fs")
-
-[node name="BgSprite2" type="Sprite2D" parent="." unique_id=1917079477]
-position = Vector2(163, 353)
-scale = Vector2(0.16808325, 0.13424395)
-texture = ExtResource("2_vw4fs")
-
-[node name="BgSprite3" type="Sprite2D" parent="." unique_id=429124945]
-position = Vector2(949.00006, 353)
-scale = Vector2(0.16808325, 0.13424395)
+scale = Vector2(0.15864116, 0.1373308)
 texture = ExtResource("2_vw4fs")
 
 [node name="MoveTimer" type="Timer" parent="." unique_id=788736074]
@@ -77,7 +67,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_8rwyb")
 offset_left = 489.0
 offset_top = 290.0
 offset_right = 658.0
-offset_bottom = 380.0
+offset_bottom = 340.0
 theme_override_font_sizes/font_size = 30
 text = "Score:"
 
