@@ -28,6 +28,11 @@ grow_vertical = 2
 color = Color(0.08627451, 0.011764706, 0.19607843, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2137830237]
-position = Vector2(569.00006, 359)
+position = Vector2(557, 353)
 scale = Vector2(0.15864116, 0.1373308)
 texture = ExtResource("2_vw4fs")
+
+[node name="MoveTimer" type="Timer" parent="." unique_id=788736074]
+wait_time = 0.2
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
