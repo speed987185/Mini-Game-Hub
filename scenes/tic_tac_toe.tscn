@@ -89,6 +89,7 @@ offset_bottom = 188.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_bfk5e")
 
 [node name="tictactoe_game_over" type="CanvasLayer" parent="." unique_id=503119756]
+process_mode = 3
 
 [node name="Panel" type="Panel" parent="tictactoe_game_over" unique_id=896446248]
 anchors_preset = 8
@@ -117,6 +118,7 @@ offset_left = 449.0
 offset_top = 343.0
 offset_right = 535.0
 offset_bottom = 393.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
 text = "Play Again"
 
 [node name="home" type="Button" parent="tictactoe_game_over" unique_id=65382493]
@@ -124,6 +126,7 @@ offset_left = 603.0
 offset_top = 343.0
 offset_right = 689.0
 offset_bottom = 393.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
 text = "Home"
 
 [node name="title" type="Label" parent="tictactoe_game_over" unique_id=1470799205]
@@ -135,5 +138,10 @@ offset_top = 185.0
 offset_right = 122.5
 offset_bottom = 266.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "Game Over!"
+
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="tictactoe_game_over/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="tictactoe_game_over/home" to="." method="_on_home_pressed"]

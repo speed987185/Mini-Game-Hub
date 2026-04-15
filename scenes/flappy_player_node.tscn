@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://v5ny5u8lmjra"]
 
-[ext_resource type="Texture2D" uid="uid://b1ujyqg75nwk7" path="res://assets/flappy/bird.png" id="1_e8ah2"]
 [ext_resource type="Script" uid="uid://bm274xklrd7n1" path="res://scripts/flappy_bird.gd" id="1_nq5cq"]
+[ext_resource type="Texture2D" uid="uid://cdcy8uqklj5cm" path="res://assets/flappy/plater.png" id="2_nq5cq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq5cq"]
 size = Vector2(16, 16)
@@ -19,7 +19,8 @@ script = ExtResource("1_nq5cq")
 shape = SubResource("RectangleShape2D_nq5cq")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bird" unique_id=881105077]
-texture = ExtResource("1_e8ah2")
+texture_filter = 1
+texture = ExtResource("2_nq5cq")
 
 [node name="Detect" type="Area2D" parent="Bird" unique_id=839935006]
 

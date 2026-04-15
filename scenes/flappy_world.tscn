@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://dtdnwywkckhqx"]
 
 [ext_resource type="Script" uid="uid://bm274xklrd7n1" path="res://scripts/flappy_bird.gd" id="1_b1j26"]
-[ext_resource type="Script" uid="uid://b5tpude5b2t8b" path="res://scripts/flappy_world.gd" id="1_quv2h"]
-[ext_resource type="PackedScene" uid="uid://bnyayn2xy7jtl" path="res://scenes/fade_transitions.tscn" id="2_1d2dl"]
 [ext_resource type="Texture2D" uid="uid://b1ujyqg75nwk7" path="res://assets/flappy/bird.png" id="2_54nvg"]
+[ext_resource type="Texture2D" uid="uid://cdcy8uqklj5cm" path="res://assets/flappy/plater.png" id="2_quv2h"]
 [ext_resource type="Texture2D" uid="uid://c6fi13kmvldpn" path="res://extras/288x288 textures (3).png" id="3_54nvg"]
 [ext_resource type="PackedScene" uid="uid://ct3i7ilcuq34s" path="res://scenes/flappy_wallnode.tscn" id="3_cbp1d"]
 [ext_resource type="PackedScene" uid="uid://cprt7lep30tnj" path="res://scenes/kill_zone.tscn" id="5_cbp1d"]
@@ -21,9 +20,6 @@ size = Vector2(26, 269)
 distance = -488.0
 
 [node name="flappy_world" type="Node2D" unique_id=2146478654]
-script = ExtResource("1_quv2h")
-
-[node name="Fade_transitions" parent="." unique_id=182935378 instance=ExtResource("2_1d2dl")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=181740645]
 follow_viewport_enabled = true
@@ -43,7 +39,9 @@ script = ExtResource("1_b1j26")
 shape = SubResource("RectangleShape2D_nq5cq")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerNode/Bird" unique_id=881105077]
-texture = ExtResource("2_54nvg")
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_quv2h")
 
 [node name="Detect" type="Area2D" parent="PlayerNode/Bird" unique_id=839935006]
 
@@ -101,9 +99,6 @@ position = Vector2(432, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" unique_id=492494983]
 shape = SubResource("WorldBoundaryShape2D_quv2h")
 
-[node name="Timer" type="Timer" parent="." unique_id=911273134]
-
 [connection signal="area_entered" from="PlayerNode/Bird/Detect" to="PlayerNode/Bird" method="_on_detect_area_entered"]
 [connection signal="body_entered" from="PlayerNode/Bird/Detect" to="PlayerNode/Bird" method="_on_detect_body_entered"]
 [connection signal="body_entered" from="PlayerNode/Bird/Resetter" to="PlayerNode/Bird" method="_on_resetter_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

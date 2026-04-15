@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dn8e0dvjxx5fh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vc10"]
+bg_color = Color(0.7076613, 0.6342874, 0.99940485, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[node name="Hud" type="CanvasLayer" unique_id=711120775]
+
+[node name="ScorePanel" type="Panel" parent="." unique_id=951517497]
+offset_right = 1150.0
+offset_bottom = 78.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3vc10")
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1375905711]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -139.0
+offset_top = 11.0
+offset_right = 134.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Score : 0 🥳"

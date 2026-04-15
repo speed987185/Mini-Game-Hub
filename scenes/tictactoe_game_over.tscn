@@ -58,5 +58,6 @@ offset_top = 185.0
 offset_right = 122.5
 offset_bottom = 266.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "Game Over!"

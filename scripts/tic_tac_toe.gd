@@ -29,11 +29,11 @@ func _input(event):
 			
 			if grid_pos.x < 3 and grid_pos.y < 3:
 				if grid_data[grid_pos.y][grid_pos.x] == 0:
-					# marker
+					# Place marker
 					grid_data[grid_pos.y][grid_pos.x] = player
 					create_marker(player, grid_pos * cell_size + Vector2i(cell_size/2, cell_size/2))
 					
-					# win check
+					# Check win
 					var win_result = check_win()
 					if win_result != 0:
 						show_game_over(win_result)
@@ -42,7 +42,7 @@ func _input(event):
 					# Switch player
 					player *= -1
 					
-					# Update cross or circle
+					# Update temp marker (next player preview)
 					if temp_marker:
 						temp_marker.queue_free()
 					create_marker(player, player_panel_pos + Vector2i(cell_size/2, cell_size/2), true)
@@ -61,6 +61,7 @@ func new_game() -> void:
 	
 	create_marker(player, player_panel_pos + Vector2i(cell_size/2, cell_size/2), true)
 	game_over_panel.hide()
+	get_tree().paused = false   # ← Important: Unpause when starting new game
 
 
 func create_marker(player: int, position: Vector2i, temp: bool = false) -> void:
@@ -83,9 +84,7 @@ func create_marker(player: int, position: Vector2i, temp: bool = false) -> void:
 
 func check_win() -> int:
 	for i in 3:
-		# Row
 		var row_sum = grid_data[i][0] + grid_data[i][1] + grid_data[i][2]
-		# Column
 		var col_sum = grid_data[0][i] + grid_data[1][i] + grid_data[2][i]
 		
 		if row_sum == 3 or col_sum == 3:
@@ -93,7 +92,6 @@ func check_win() -> int:
 		elif row_sum == -3 or col_sum == -3:
 			return -1
 	
-	# Diagonals
 	var diagonal1 = grid_data[0][0] + grid_data[1][1] + grid_data[2][2]
 	var diagonal2 = grid_data[0][2] + grid_data[1][1] + grid_data[2][0]
 	
@@ -113,5 +111,19 @@ func show_game_over(winner: int) -> void:
 		result_label.text = "Player 1 Wins!"
 	elif winner == -1:
 		result_label.text = "Player 2 Wins!"
-	else:
-		result_label.text = "It's a Draw!" 
+
+
+# Button signals
+func _on_back_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/games.tscn")
+
+
+func _on_reset_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/tic_tac_toe.tscn")
+
+
+func _on_home_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

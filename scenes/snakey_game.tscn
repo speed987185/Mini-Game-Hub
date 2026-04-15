@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://doovbwcu4pss8"]
+
+[ext_resource type="Script" uid="uid://byo3jrt7wbqt5" path="res://scripts/snakey_game.gd" id="1_xv18u"]
+[ext_resource type="PackedScene" uid="uid://b88xw3al6iy6u" path="res://scenes/snake.tscn" id="2_lve57"]
+[ext_resource type="Texture2D" uid="uid://d0pit6ux1vl1x" path="res://assets/snakey/bg.jpg" id="2_vw4fs"]
+[ext_resource type="PackedScene" uid="uid://dn8e0dvjxx5fh" path="res://scenes/Snakey_hud.tscn" id="3_43lsx"]
+
+[node name="Snakey_Game" type="Node" unique_id=1648895573]
+script = ExtResource("1_xv18u")
+snake_scene = ExtResource("2_lve57")
+
+[node name="Hud" parent="." unique_id=711120775 instance=ExtResource("3_43lsx")]
+
+[node name="Panel" type="Panel" parent="." unique_id=1187271662]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Panel" unique_id=494780159]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08627451, 0.011764706, 0.19607843, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2137830237]
+position = Vector2(569.00006, 359)
+scale = Vector2(0.15864116, 0.1373308)
+texture = ExtResource("2_vw4fs")
