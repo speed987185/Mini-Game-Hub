@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://7c7fh6mo77j2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rwyb"]
+bg_color = Color(0.08627451, 0.011764706, 0.19607843, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="tictactoe_game_over" type="CanvasLayer" unique_id=503119756]
+
+[node name="Panel" type="Panel" parent="." unique_id=896446248]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -221.0
+offset_top = -157.0
+offset_right = 221.0
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8rwyb")
+
+[node name="ResultLabel" type="Label" parent="." unique_id=1470588931]
+offset_left = 489.0
+offset_top = 290.0
+offset_right = 658.0
+offset_bottom = 322.0
+theme_override_font_sizes/font_size = 30
+text = "Player 0 win"
+
+[node name="Reset" type="Button" parent="." unique_id=631908178]
+offset_left = 449.0
+offset_top = 343.0
+offset_right = 535.0
+offset_bottom = 393.0
+text = "Play Again"
+
+[node name="home" type="Button" parent="." unique_id=65382493]
+offset_left = 603.0
+offset_top = 343.0
+offset_right = 689.0
+offset_bottom = 393.0
+text = "Home"
+
+[node name="title" type="Label" parent="." unique_id=1470799205]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -122.5
+offset_top = 185.0
+offset_right = 122.5
+offset_bottom = 266.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "Game Over!"

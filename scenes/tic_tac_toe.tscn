@@ -24,6 +24,17 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_size = 10
 shadow_offset = Vector2(10, 10)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rwyb"]
+bg_color = Color(0.08627451, 0.011764706, 0.19607843, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="Tic_Tac_Toe" type="Node" unique_id=1566595643]
 script = ExtResource("1_etyx0")
 circle_scene = ExtResource("2_oa36e")
@@ -33,7 +44,7 @@ cross_scene = ExtResource("3_oa36e")
 position = Vector2(324, 324)
 scale = Vector2(1.08, 1.08)
 
-[node name="SideInfo" type="Panel" parent="." unique_id=936816481]
+[node name="Side_panel" type="Panel" parent="." unique_id=936816481]
 custom_minimum_size = Vector2(300, 600)
 anchors_preset = 11
 anchor_left = 1.0
@@ -45,19 +56,19 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oa36e")
 
 [node name="Title" type="Label" parent="." unique_id=495388028]
-offset_left = 732.0
-offset_top = 27.0
-offset_right = 1074.0
-offset_bottom = 132.0
+offset_left = 723.0
+offset_top = 315.0
+offset_right = 1065.0
+offset_bottom = 420.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 64
 text = "Tic-Tac-Toe"
 
 [node name="PlayerLabel" type="Label" parent="." unique_id=925465312]
-offset_left = 809.0
-offset_top = 163.0
-offset_right = 990.0
-offset_bottom = 214.0
+offset_left = 673.0
+offset_top = 211.0
+offset_right = 854.0
+offset_bottom = 262.0
 theme_override_font_sizes/font_size = 40
 text = "turns for:"
 
@@ -71,8 +82,58 @@ theme_override_font_sizes/font_size = 60
 text = "↩"
 
 [node name="turns" type="Panel" parent="." unique_id=166960620]
-offset_left = 822.0
-offset_top = 258.0
-offset_right = 1003.0
-offset_bottom = 437.0
+offset_left = 666.0
+offset_top = 9.0
+offset_right = 847.0
+offset_bottom = 188.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_bfk5e")
+
+[node name="tictactoe_game_over" type="CanvasLayer" parent="." unique_id=503119756]
+
+[node name="Panel" type="Panel" parent="tictactoe_game_over" unique_id=896446248]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -221.0
+offset_top = -157.0
+offset_right = 221.0
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8rwyb")
+
+[node name="ResultLabel" type="Label" parent="tictactoe_game_over" unique_id=1470588931]
+offset_left = 489.0
+offset_top = 290.0
+offset_right = 658.0
+offset_bottom = 322.0
+theme_override_font_sizes/font_size = 30
+text = "Player 0 win"
+
+[node name="Reset" type="Button" parent="tictactoe_game_over" unique_id=631908178]
+offset_left = 449.0
+offset_top = 343.0
+offset_right = 535.0
+offset_bottom = 393.0
+text = "Play Again"
+
+[node name="home" type="Button" parent="tictactoe_game_over" unique_id=65382493]
+offset_left = 603.0
+offset_top = 343.0
+offset_right = 689.0
+offset_bottom = 393.0
+text = "Home"
+
+[node name="title" type="Label" parent="tictactoe_game_over" unique_id=1470799205]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -122.5
+offset_top = 185.0
+offset_right = 122.5
+offset_bottom = 266.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "Game Over!"
